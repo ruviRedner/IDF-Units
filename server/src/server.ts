@@ -15,7 +15,7 @@ interface UnitsData {
 // משתנה לנתונים שמאוחסנים בזיכרון
 let unitsData: UnitsData | null = null;
 // בעת עליית השרת JSON-טוען את הנתונים מה
-fs.readFile(path.join(__dirname, "../idfUnits.json"), "utf8", (err, data) => {
+fs.readFile(path.join(__dirname, "./server/idfUnits.json"), "utf8", (err, data) => {
   if (err) {
     console.error("Error loading data:", err);
     return;
