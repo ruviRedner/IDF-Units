@@ -12,17 +12,21 @@ interface Unit {
 interface UnitsData {
   [category: string]: Unit[];
 }
-// משתנה לנתונים שמאוחסנים בזיכרון
+
 let unitsData: UnitsData | null = null;
-// בעת עליית השרת JSON-טוען את הנתונים מה
-fs.readFile(path.join(__dirname, "./server/idfUnits.json"), "utf8", (err, data) => {
-  if (err) {
-    console.error("Error loading data:", err);
-    return;
+
+fs.readFile(
+  path.join(__dirname, "./server/idfUnits.json"),
+  "utf8",
+  (err, data) => {
+    if (err) {
+      console.error("Error loading data:", err);
+      return;
+    }
+    unitsData = JSON.parse(data);
+    console.log("Data loaded successfully");
   }
-  unitsData = JSON.parse(data);
-  console.log("Data loaded successfully");
-});
+);
 app.get("/api/units", (req: Request, res: Response) => {
   if (!unitsData) {
     res.status(500).json({ error: "Data not loaded" });
