@@ -3,7 +3,7 @@ import { DeploymentContext } from "../context/DeploymentContext";
 interface Props {
   unitname: string;
 }
-enum status {
+ export enum status {
   idel = "Idle",
   Deployed = "Deployed",
   Active = "Active",
